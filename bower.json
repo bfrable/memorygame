@@ -1,0 +1,17 @@
+{
+  "name": "game",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angular": "^1.6.7",
+    "flip": "^1.1.2",
+    "angular-route": "^1.6.7",
+    "angular-animate": "^1.6.7",
+    "angular-touch": "^1.6.7"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "angular-touch": "^1.6.7"
+  }
+}

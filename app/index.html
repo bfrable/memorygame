@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>game</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    
+  </head>
+  <body>
+
+    <main class="app" ng-app="app" ng-controller="AppController" ng-class="{'app-ready': appReady}">
+
+      <div class="app__hud">
+
+        <div class="app__hud__game-info" ng-hide="gameCompleted" ng-click="titleAction()" ng-swipe-left="changeIcons()" ng-swipe-right="changeIcons()">Find the match</div>
+        <div class="app__hud__game-status">player: {{activePlayer.name}}, clicks: {{activePlayer.clicks}}, matches: {{activePlayer.matches}}, cards: {{cardsLeft}}</div>
+        <button ng-click="restart()" class="app__hud__btn-restart">Restart</button>
+      </div>
+
+      <div class="app__cards-container">
+
+        <div class="app__hud__game-completed" ng-show="gameCompleted">
+          Congratulations {{winner.name}}! You're the winner!
+        </div>
+
+        <div class="app__cards-container__card" role="button" ng-repeat="card in list" id="{{ 'card-' + card.id }}">
+
+          <div class="front app__cards-container__card__front" ng-click="click(card, $index)" ng-swipe-right="click(card, $index)" ng-swipe-left="click(card, $index)"> {{card.isKnown ? "" : "?"}}</div>
+          <div class="back app__cards-container__card__back">
+            <span ng-class="card.theme">{{card.icon}}</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/flip/dist/jquery.flip.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
