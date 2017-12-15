@@ -175,10 +175,8 @@
         // assign points
         if ($scope.activePlayer === $scope.players.player1) {
           $scope.players.player1.matches += 1;
-          $scope.activePlayer = $scope.players.player2;
         } else {
           $scope.players.player2.matches += 1;
-          $scope.activePlayer = $scope.players.player1;
         }
 
         // remove cards
@@ -192,7 +190,7 @@
         // game over
         if ($scope.list.length === 0) {
           $scope.gameCompleted = true;
-          $scope.winner = $scope.players.player1.clicks < $scope.players.player2.clicks ? $scope.players.player1 : $scope.players.player2;
+          $scope.winner = $scope.players.player1.matches < $scope.players.player2.matches ? $scope.players.player2 : $scope.players.player1;
         }
 
         return;
@@ -242,5 +240,4 @@
     }
     return array;
   }
-
 };
